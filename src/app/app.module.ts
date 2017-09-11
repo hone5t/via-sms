@@ -6,6 +6,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { SMS } from '@ionic-native/sms';
+import { IonicStorageModule } from '@ionic/storage';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { NativeStorage } from '@ionic-native/native-storage';
+import { Toast } from '@ionic-native/toast';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,10 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
+    SMS,
+    AndroidPermissions,
+    NativeStorage,
+    Toast,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

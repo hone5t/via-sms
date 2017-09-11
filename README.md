@@ -1,26 +1,18 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# Send Sms to Via stop
 
-## How to use this template
+## sign apk and optimize it for google play release  
+you need a key to sign your apk  
+if you dont have one you can generate it with the command  
+```bash  
+keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000  
+```  
+### mgenerate the apk using the command  
+```bash  
+ionic cordova build --release android   
+```  
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
-
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
-
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
+### then sign and optimize the apk  
+```bash  
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore via-sms-key.keystore android-release-unsigned.apk alias_name  
+zipalign -v 4 android-release-unsigned.apk viaSms.apk  
 ```
-
-Then, to run it, cd into `myBlank` and run:
-
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
-
-Substitute ios for android if not on a Mac.
-
